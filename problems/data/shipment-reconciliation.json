@@ -1,0 +1,114 @@
+{
+  "id": "shipment-reconciliation",
+  "title": "Shipment Reconciliation",
+  "difficulty": "easy",
+  "tags": ["hashing", "strings", "sorting"],
+  "statement": [
+    "A warehouse scans every item it ships, and the store scans every item it receives. Both scans are lists of SKU codes, and the same SKU can appear many times.",
+    "Report every SKU whose counts don't match as `\"SKU:+d\"` or `\"SKU:-d\"`, where `d` is how many more (`+`) or fewer (`-`) items the store received than the warehouse shipped. Return the reports sorted by SKU in plain character order."
+  ],
+  "signature": {
+    "name": "reconcile",
+    "params": [
+      {
+        "name": "shipped",
+        "type": "string[]"
+      },
+      {
+        "name": "received",
+        "type": "string[]"
+      }
+    ],
+    "returns": "string[]"
+  },
+  "examples": [
+    {
+      "input": "shipped = [\"A1\",\"B2\",\"A1\",\"C3\"], received = [\"A1\",\"C3\",\"C3\",\"D4\"]",
+      "output": "[\"A1:-1\",\"B2:-1\",\"C3:+1\",\"D4:+1\"]"
+    },
+    {
+      "input": "shipped = [\"X9\",\"X9\"], received = [\"X9\",\"X9\"]",
+      "output": "[]",
+      "explanation": "Every count matches, so there's nothing to report."
+    }
+  ],
+  "constraints": [
+    "0 <= shipped.length, received.length <= 10^5",
+    "SKUs are 1 to 12 characters of uppercase letters, digits, and hyphens"
+  ],
+  "starterCode": {
+    "python": "def reconcile(shipped: list[str], received: list[str]) -> list[str]:\n    pass\n",
+    "javascript": "/**\n * @param {string[]} shipped\n * @param {string[]} received\n * @returns {string[]}\n */\nfunction reconcile(shipped, received) {\n  \n}\n",
+    "java": "class Solution {\n    public String[] reconcile(String[] shipped, String[] received) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    vector<string> reconcile(vector<string>& shipped, vector<string>& received) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [
+        ["A1", "B2", "A1", "C3"],
+        ["A1", "C3", "C3", "D4"]
+      ],
+      "expected": ["A1:-1", "B2:-1", "C3:+1", "D4:+1"],
+      "hidden": false
+    },
+    {
+      "args": [
+        ["X9", "X9"],
+        ["X9", "X9"]
+      ],
+      "expected": [],
+      "hidden": false
+    },
+    {
+      "args": [[], []],
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "args": [["A"], []],
+      "expected": ["A:-1"],
+      "hidden": true
+    },
+    {
+      "args": [[], ["B", "B", "B"]],
+      "expected": ["B:+3"],
+      "hidden": true
+    },
+    {
+      "args": [
+        ["K-2", "K-10"],
+        ["K-10", "K-10"]
+      ],
+      "expected": ["K-10:+1", "K-2:-1"],
+      "hidden": true
+    },
+    {
+      "args": [
+        ["Z", "A", "Z"],
+        ["A", "Z", "Z"]
+      ],
+      "expected": [],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Comparing every shipped item with every received item is quadratic. What could you count instead?",
+    "Use one hash map from SKU to a net count: plus one for each received item, minus one for each shipped item.",
+    "Keep only the SKUs whose net count isn't zero, sort them, and write the sign explicitly, including the plus."
+  ],
+  "pitfalls": [
+    "Missing SKUs that appear in only one of the lists.",
+    "Dropping the + sign on positive differences.",
+    "Sorting SKUs that look numeric as numbers, so K-10 and K-2 come out in the wrong order.",
+    "Reporting SKUs whose difference is zero."
+  ],
+  "complexity": {
+    "time": "O(n + m + u log u)",
+    "space": "O(u)"
+  },
+  "interviewerNotes": [
+    "Ask whether one map is enough or they need two.",
+    "Ask what the sort costs and why it's over distinct SKUs, not all items.",
+    "Follow-up: the scans are too big for memory. Strong answers mention sorting both files and merging, or partitioning by hash."
+  ]
+}

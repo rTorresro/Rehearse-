@@ -1,0 +1,122 @@
+{
+  "id": "shared-shifts",
+  "title": "Shared Shifts",
+  "difficulty": "easy",
+  "tags": ["two-pointers", "arrays"],
+  "statement": [
+    "Two team rosters list employee IDs in non-decreasing order, and an ID can appear more than once in a roster.",
+    "Return the IDs that appear in both rosters, in increasing order, each listed once."
+  ],
+  "signature": {
+    "name": "sharedIds",
+    "params": [
+      {
+        "name": "a",
+        "type": "int[]"
+      },
+      {
+        "name": "b",
+        "type": "int[]"
+      }
+    ],
+    "returns": "int[]"
+  },
+  "examples": [
+    {
+      "input": "a = [1,2,2,5,9], b = [2,2,3,9,9,12]",
+      "output": "[2,9]"
+    },
+    {
+      "input": "a = [4,6], b = [1,3]",
+      "output": "[]"
+    }
+  ],
+  "constraints": [
+    "0 <= a.length, b.length <= 10^5",
+    "0 <= a[i], b[i] <= 10^9",
+    "a and b are sorted in non-decreasing order"
+  ],
+  "starterCode": {
+    "python": "def shared_ids(a: list[int], b: list[int]) -> list[int]:\n    pass\n",
+    "javascript": "/**\n * @param {number[]} a\n * @param {number[]} b\n * @returns {number[]}\n */\nfunction sharedIds(a, b) {\n  \n}\n",
+    "java": "class Solution {\n    public int[] sharedIds(int[] a, int[] b) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    vector<int> sharedIds(vector<int>& a, vector<int>& b) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [
+        [1, 2, 2, 5, 9],
+        [2, 2, 3, 9, 9, 12]
+      ],
+      "expected": [2, 9],
+      "hidden": false
+    },
+    {
+      "args": [
+        [4, 6],
+        [1, 3]
+      ],
+      "expected": [],
+      "hidden": false
+    },
+    {
+      "args": [[], [1]],
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "args": [[7], [7]],
+      "expected": [7],
+      "hidden": true
+    },
+    {
+      "args": [[1, 1, 1], [1]],
+      "expected": [1],
+      "hidden": true
+    },
+    {
+      "args": [
+        [1, 3, 5, 7],
+        [2, 3, 4, 7, 8]
+      ],
+      "expected": [3, 7],
+      "hidden": true
+    },
+    {
+      "args": [
+        [0, 0, 2],
+        [0, 2, 2]
+      ],
+      "expected": [0, 2],
+      "hidden": true
+    },
+    {
+      "args": [
+        [5, 6, 7],
+        [1, 2, 3, 4]
+      ],
+      "expected": [],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "A hash set works, but it ignores that both lists are already sorted. How could you use that?",
+    "Walk both lists at once with one index each, always moving the index that points at the smaller value.",
+    "When the values match, record it unless it equals the last value you recorded, then move both indices."
+  ],
+  "pitfalls": [
+    "Listing an ID more than once when it repeats in both rosters.",
+    "Not moving either index on a match, which loops forever.",
+    "Checking for duplicates against the wrong previous value.",
+    "Using a set and losing the O(1) extra space the sorted order allows."
+  ],
+  "complexity": {
+    "time": "O(n + m)",
+    "space": "O(1)"
+  },
+  "interviewerNotes": [
+    "Ask them to compare the hash set and two-pointer approaches and when each is better.",
+    "Follow-up: one roster has 10 IDs and the other has 10 million. Strong answers binary search the big one for O(m log n).",
+    "Follow-up: the rosters are streams you can only read once."
+  ]
+}

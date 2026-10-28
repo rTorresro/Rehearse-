@@ -1,0 +1,114 @@
+{
+  "id": "caption-wrap",
+  "title": "Caption Wrap",
+  "difficulty": "medium",
+  "tags": ["strings", "simulation"],
+  "statement": [
+    "A video player shows captions in lines at most `width` characters wide. The words in `text` are separated by single spaces.",
+    "Fill lines greedily: add the next word to the current line, with one space before it, as long as the line stays within `width`; otherwise start a new line. A word longer than `width` is first cut into pieces of exactly `width` characters, with the last piece holding whatever is left, and each piece is then treated as its own word.",
+    "Return the lines in order."
+  ],
+  "signature": {
+    "name": "wrapCaption",
+    "params": [
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "width",
+        "type": "int"
+      }
+    ],
+    "returns": "string[]"
+  },
+  "examples": [
+    {
+      "input": "text = \"the quick brown fox jumps\", width = 10",
+      "output": "[\"the quick\",\"brown fox\",\"jumps\"]"
+    },
+    {
+      "input": "text = \"hi supercalifragilistic yo\", width = 8",
+      "output": "[\"hi\",\"supercal\",\"ifragili\",\"stic yo\"]",
+      "explanation": "The long word is cut into \"supercal\", \"ifragili\", and \"stic\", and \"yo\" still fits after the last piece."
+    }
+  ],
+  "constraints": [
+    "0 <= text.length <= 10^4",
+    "1 <= width <= 100",
+    "text is lowercase words separated by single spaces, with no leading or trailing spaces"
+  ],
+  "starterCode": {
+    "python": "def wrap_caption(text: str, width: int) -> list[str]:\n    pass\n",
+    "javascript": "/**\n * @param {string} text\n * @param {number} width\n * @returns {string[]}\n */\nfunction wrapCaption(text, width) {\n  \n}\n",
+    "java": "class Solution {\n    public String[] wrapCaption(String text, int width) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    vector<string> wrapCaption(string text, int width) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": ["the quick brown fox jumps", 10],
+      "expected": ["the quick", "brown fox", "jumps"],
+      "hidden": false
+    },
+    {
+      "args": ["hi supercalifragilistic yo", 8],
+      "expected": ["hi", "supercal", "ifragili", "stic yo"],
+      "hidden": false
+    },
+    {
+      "args": ["", 5],
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "args": ["a", 1],
+      "expected": ["a"],
+      "hidden": true
+    },
+    {
+      "args": ["abc", 1],
+      "expected": ["a", "b", "c"],
+      "hidden": true
+    },
+    {
+      "args": ["aa bb cc", 5],
+      "expected": ["aa bb", "cc"],
+      "hidden": true
+    },
+    {
+      "args": ["one two", 7],
+      "expected": ["one two"],
+      "hidden": true
+    },
+    {
+      "args": ["abcdefgh ij", 4],
+      "expected": ["abcd", "efgh", "ij"],
+      "hidden": true
+    },
+    {
+      "args": ["ab cdefg", 3],
+      "expected": ["ab", "cde", "fg"],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Deal with the too-long words first. If you cut them into width-sized pieces up front, every remaining word fits on a line by itself.",
+    "Then keep the current line and its length. A word fits if the line is empty, or if length + 1 + the word's length is at most width.",
+    "Don't forget to add the last line at the end, and don't add an empty line when the text is empty."
+  ],
+  "pitfalls": [
+    "Forgetting the space when checking whether the next word fits.",
+    "Adding an empty line at the start or end.",
+    "Cutting long words into pieces that are off by one character.",
+    "Leaving trailing spaces on lines."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+  },
+  "interviewerNotes": [
+    "See whether they ask how words longer than width are handled before coding. It's the main ambiguity.",
+    "Have them test a line that fits exactly, like \"one two\" with width 7.",
+    "Follow-up: how would you lay out lines to minimize ragged right edges instead of filling greedily? Discussion only, it's a dynamic programming problem."
+  ]
+}

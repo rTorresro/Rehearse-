@@ -1,0 +1,119 @@
+{
+  "id": "well-nested-tags",
+  "title": "Well-Nested Tags",
+  "difficulty": "easy",
+  "tags": ["stacks", "strings"],
+  "statement": [
+    "A markup document has been split into tokens. An opening tag looks like `<name>`, a closing tag looks like `</name>`, and a self-closing tag looks like `<name/>`. Every other token is plain text.",
+    "The document is *well nested* if every opening tag is closed by a matching closing tag, and tags close in the reverse order they were opened. Self-closing tags and text never need closing. Return whether `tokens` is well nested."
+  ],
+  "signature": {
+    "name": "isWellNested",
+    "params": [
+      {
+        "name": "tokens",
+        "type": "string[]"
+      }
+    ],
+    "returns": "bool"
+  },
+  "examples": [
+    {
+      "input": "tokens = [\"<p>\",\"hello\",\"<b>\",\"world\",\"</b>\",\"</p>\"]",
+      "output": "true"
+    },
+    {
+      "input": "tokens = [\"<p>\",\"<b>\",\"</p>\",\"</b>\"]",
+      "output": "false",
+      "explanation": "<b> is still open when </p> arrives."
+    }
+  ],
+  "constraints": [
+    "0 <= tokens.length <= 10^4",
+    "tag names are 1 to 10 lowercase letters",
+    "text tokens never start with \"<\""
+  ],
+  "starterCode": {
+    "python": "def is_well_nested(tokens: list[str]) -> bool:\n    pass\n",
+    "javascript": "/**\n * @param {string[]} tokens\n * @returns {boolean}\n */\nfunction isWellNested(tokens) {\n  \n}\n",
+    "java": "class Solution {\n    public boolean isWellNested(String[] tokens) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    bool isWellNested(vector<string>& tokens) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [["<p>", "hello", "<b>", "world", "</b>", "</p>"]],
+      "expected": true,
+      "hidden": false
+    },
+    {
+      "args": [["<p>", "<b>", "</p>", "</b>"]],
+      "expected": false,
+      "hidden": false
+    },
+    {
+      "args": [[]],
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "args": [["just text"]],
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "args": [["<br/>"]],
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "args": [["</p>"]],
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "args": [["<p>"]],
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "args": [["<a>", "<a>", "</a>", "</a>"]],
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "args": [["<a>", "<b/>", "</a>"]],
+      "expected": true,
+      "hidden": true
+    },
+    {
+      "args": [["<a>", "</b>"]],
+      "expected": false,
+      "hidden": true
+    },
+    {
+      "args": [["<ul>", "<li>", "</li>", "<li>", "</li>", "</ul>", "<p>", "</p>"]],
+      "expected": true,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "What do you need to remember about the tags that are open right now, and which one has to close next?",
+    "Push the name of each opening tag on a stack. A closing tag has to match the name on top.",
+    "At the end the stack has to be empty, and a closing tag that arrives when the stack is empty fails right away."
+  ],
+  "pitfalls": [
+    "Not checking that the stack is empty at the end.",
+    "Popping from an empty stack on a stray closing tag.",
+    "Treating self-closing tags as opening tags.",
+    "Comparing raw tokens instead of tag names, so <p> never matches </p>."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+  },
+  "interviewerNotes": [
+    "Ask how they tell the four kinds of token apart.",
+    "Ask why a counter per tag name isn't enough, using the second example.",
+    "Follow-ups: report the index of the first problem, or support tags with attributes like <a href=\"x\">."
+  ]
+}

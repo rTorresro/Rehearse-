@@ -1,0 +1,121 @@
+{
+  "id": "wifi-dead-zones",
+  "title": "Wi-Fi Dead Zones",
+  "difficulty": "medium",
+  "tags": ["graphs", "bfs"],
+  "statement": [
+    "An office floor plan is a grid of strings. `#` is a wall, `.` is open floor, and `R` is a router standing on open floor.",
+    "A router's signal travels up, down, left, and right through open floor, never through walls, and reaches every cell within `range` steps. Return how many open floor cells (`.`) no router reaches."
+  ],
+  "signature": {
+    "name": "deadZones",
+    "params": [
+      {
+        "name": "grid",
+        "type": "string[]"
+      },
+      {
+        "name": "range",
+        "type": "int"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "grid = [\"R..#.\",\".#..R\",\".....\"], range = 2",
+      "output": "2",
+      "explanation": "The two middle cells of the bottom row are 3 steps from both routers."
+    },
+    {
+      "input": "grid = [\"R#.\"], range = 5",
+      "output": "1",
+      "explanation": "The wall blocks the only path to the last cell."
+    }
+  ],
+  "constraints": [
+    "1 <= rows, cols <= 200",
+    "0 <= range <= 400",
+    "every row has the same length",
+    "the grid contains only '#', '.', and 'R'"
+  ],
+  "starterCode": {
+    "python": "def dead_zones(grid: list[str], range: int) -> int:\n    pass\n",
+    "javascript": "/**\n * @param {string[]} grid\n * @param {number} range\n * @returns {number}\n */\nfunction deadZones(grid, range) {\n  \n}\n",
+    "java": "class Solution {\n    public int deadZones(String[] grid, int range) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    int deadZones(vector<string>& grid, int range) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [["R..#.", ".#..R", "....."], 2],
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "args": [["R#."], 5],
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "args": [["."], 0],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [["R"], 3],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [["R.."], 0],
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "args": [["R.."], 1],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [["...", "...", "..."], 1],
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "args": [["R...R"], 1],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [[".#.", "#R#", ".#."], 10],
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "args": [["R....", "####.", "....."], 6],
+      "expected": 4,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Running a separate search from every router repeats a lot of work. Could all the routers spread at the same time?",
+    "Put every router in one queue at distance 0 and run a single breadth-first search that never goes past range.",
+    "Mark a cell visited when you add it to the queue, then count the '.' cells that were never visited."
+  ],
+  "pitfalls": [
+    "Running one BFS per router, which multiplies the work by the number of routers.",
+    "Using DFS, which doesn't find shortest distances, so it gets range wrong.",
+    "Counting router cells as dead zones.",
+    "Marking cells visited when they leave the queue instead of when they enter it, which adds duplicates."
+  ],
+  "complexity": {
+    "time": "O(rows · cols)",
+    "space": "O(rows · cols)"
+  },
+  "interviewerNotes": [
+    "Look for the multi-source BFS idea. Ask why it gives each cell its distance to the nearest router.",
+    "Ask why DFS doesn't work for a distance limit.",
+    "Check range = 0 and a grid with no routers.",
+    "Follow-up: signal can pass through walls at a cost of 3 steps. That needs Dijkstra or a 0-1 BFS."
+  ]
+}

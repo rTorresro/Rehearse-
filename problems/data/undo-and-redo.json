@@ -1,0 +1,120 @@
+{
+  "id": "undo-and-redo",
+  "title": "Undo and Redo",
+  "difficulty": "medium",
+  "tags": ["stacks", "simulation", "strings"],
+  "statement": [
+    "A tiny text editor starts empty and supports four commands:",
+    "`type <word>` appends the word, which is letters only, to the end of the text.",
+    "`delete <k>` removes the last k characters, or everything if there are fewer than k.",
+    "`undo` reverts the most recent `type` or `delete` that hasn't been undone yet, and does nothing if there isn't one.",
+    "`redo` re-applies the most recently undone change, and does nothing if there isn't one. Any new `type` or `delete` clears the changes available to redo.",
+    "Every `type` and `delete` counts as a change, even one that removes nothing. Return the text after running all the commands."
+  ],
+  "signature": {
+    "name": "finalText",
+    "params": [
+      {
+        "name": "commands",
+        "type": "string[]"
+      }
+    ],
+    "returns": "string"
+  },
+  "examples": [
+    {
+      "input": "commands = [\"type hello\",\"type world\",\"delete 3\",\"undo\",\"undo\",\"redo\"]",
+      "output": "\"helloworld\"",
+      "explanation": "The text goes hello, helloworld, hellowo, then undo twice back to hello, and redo brings back helloworld."
+    },
+    {
+      "input": "commands = [\"type abc\",\"undo\",\"type x\",\"redo\"]",
+      "output": "\"x\"",
+      "explanation": "Typing x after the undo clears the redo history."
+    }
+  ],
+  "constraints": [
+    "0 <= commands.length <= 10^4",
+    "words are 1 to 20 lowercase letters",
+    "0 <= k <= 10^4"
+  ],
+  "starterCode": {
+    "python": "def final_text(commands: list[str]) -> str:\n    pass\n",
+    "javascript": "/**\n * @param {string[]} commands\n * @returns {string}\n */\nfunction finalText(commands) {\n  \n}\n",
+    "java": "class Solution {\n    public String finalText(String[] commands) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    string finalText(vector<string>& commands) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [["type hello", "type world", "delete 3", "undo", "undo", "redo"]],
+      "expected": "helloworld",
+      "hidden": false
+    },
+    {
+      "args": [["type abc", "undo", "type x", "redo"]],
+      "expected": "x",
+      "hidden": false
+    },
+    {
+      "args": [[]],
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "args": [["undo"]],
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "args": [["redo"]],
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "args": [["type ab", "delete 5"]],
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "args": [["type ab", "delete 5", "undo"]],
+      "expected": "ab",
+      "hidden": true
+    },
+    {
+      "args": [["type a", "type b", "type c", "undo", "undo", "undo", "undo", "redo", "redo"]],
+      "expected": "ab",
+      "hidden": true
+    },
+    {
+      "args": [["type abc", "delete 0", "undo", "undo"]],
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "args": [["type hi", "undo", "redo", "redo", "delete 1", "undo", "redo"]],
+      "expected": "h",
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "What do you need to store about each change so you can reverse it later?",
+    "Keep two stacks: changes you can undo and changes you can redo. Undo moves the top change from one to the other.",
+    "For a delete, store the characters that were actually removed, so undo can put them back even when k was bigger than the text."
+  ],
+  "pitfalls": [
+    "Storing k for a delete instead of the removed characters, which breaks undo when k was larger than the text.",
+    "Forgetting to clear the redo stack on a new type or delete.",
+    "Letting undo or redo crash when its stack is empty.",
+    "Saving a full copy of the text for every change, which works but uses far more memory."
+  ],
+  "complexity": {
+    "time": "O(n + C)",
+    "space": "O(n + C)"
+  },
+  "interviewerNotes": [
+    "Ask them to compare storing snapshots with storing the change itself.",
+    "Probe deleting more than the text holds, then undoing it.",
+    "Ask whether undoing a delete of 0 should count as an undo step, and check they read the statement.",
+    "Follow-ups: add a cursor that can move, or group consecutive typing into one undo step."
+  ]
+}

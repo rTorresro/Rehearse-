@@ -1,0 +1,104 @@
+{
+  "id": "calm-streak",
+  "title": "Calm Streak",
+  "difficulty": "easy",
+  "tags": ["arrays", "sliding-window"],
+  "statement": [
+    "A weather station logs one temperature reading per hour. A stretch of consecutive hours is *calm* if every pair of neighboring readings in it differs by at most `k` degrees.",
+    "Given the readings and `k`, return the length of the longest calm stretch. A single reading on its own is a calm stretch of length 1, and an empty log has no stretch at all."
+  ],
+  "signature": {
+    "name": "calmStreak",
+    "params": [
+      {
+        "name": "readings",
+        "type": "int[]"
+      },
+      {
+        "name": "k",
+        "type": "int"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "readings = [20,21,23,30,31,31,29], k = 2",
+      "output": "4",
+      "explanation": "30, 31, 31, 29 changes by at most 2 from hour to hour."
+    },
+    {
+      "input": "readings = [5,5,5], k = 0",
+      "output": "3"
+    }
+  ],
+  "constraints": ["0 <= readings.length <= 10^5", "-100 <= readings[i] <= 100", "0 <= k <= 200"],
+  "starterCode": {
+    "python": "def calm_streak(readings: list[int], k: int) -> int:\n    pass\n",
+    "javascript": "/**\n * @param {number[]} readings\n * @param {number} k\n * @returns {number}\n */\nfunction calmStreak(readings, k) {\n  \n}\n",
+    "java": "class Solution {\n    public int calmStreak(int[] readings, int k) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    int calmStreak(vector<int>& readings, int k) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [[20, 21, 23, 30, 31, 31, 29], 2],
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "args": [[5, 5, 5], 0],
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "args": [[], 3],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[7], 0],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [[1, 10, 1, 10], 5],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, 3, 4, 10, 11], 1],
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "args": [[-5, -3, -1, 1], 2],
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "args": [[0, 3, 0, 3, 0], 3],
+      "expected": 5,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "You only ever need to compare a reading with the one right before it.",
+    "Walk through the readings once, keeping the length of the calm stretch that ends at the current hour.",
+    "When a jump is bigger than k, the stretch ending here starts over at length 1. Keep the best length you've seen."
+  ],
+  "pitfalls": [
+    "Returning 1 for an empty log.",
+    "Forgetting the absolute value, so a big drop in temperature counts as calm.",
+    "Comparing each reading with the first one in the stretch instead of its neighbor.",
+    "Counting the differences between readings instead of the readings themselves, which is off by one."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+  },
+  "interviewerNotes": [
+    "Check whether they confirm that only neighboring readings are compared, not every pair in the stretch.",
+    "Ask about the empty log and a single reading.",
+    "Follow-up: if calm meant max minus min in the stretch is at most k, how would the solution change? Strong candidates reach for a sliding window with monotonic deques."
+  ]
+}

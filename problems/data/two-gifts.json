@@ -1,0 +1,119 @@
+{
+  "id": "two-gifts",
+  "title": "Two Gifts",
+  "difficulty": "medium",
+  "tags": ["two-pointers", "sorting", "arrays"],
+  "statement": [
+    "You want to buy exactly two different gifts from a list of `prices`, spending as much of your `budget` as possible without going over. Items at different positions count as different gifts, even if they cost the same.",
+    "Return the largest total of two different gifts that is at most `budget`, or `-1` if no two gifts fit."
+  ],
+  "signature": {
+    "name": "bestPair",
+    "params": [
+      {
+        "name": "prices",
+        "type": "int[]"
+      },
+      {
+        "name": "budget",
+        "type": "int"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "prices = [34,23,1,24,75,33,54,8], budget = 60",
+      "output": "58",
+      "explanation": "34 + 24 = 58, and no pair adds up to 59 or 60."
+    },
+    {
+      "input": "prices = [10,20,30], budget = 15",
+      "output": "-1"
+    }
+  ],
+  "constraints": [
+    "0 <= prices.length <= 10^5",
+    "1 <= prices[i] <= 10^9",
+    "1 <= budget <= 2 * 10^9"
+  ],
+  "starterCode": {
+    "python": "def best_pair(prices: list[int], budget: int) -> int:\n    pass\n",
+    "javascript": "/**\n * @param {number[]} prices\n * @param {number} budget\n * @returns {number}\n */\nfunction bestPair(prices, budget) {\n  \n}\n",
+    "java": "class Solution {\n    public int bestPair(int[] prices, int budget) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    int bestPair(vector<int>& prices, int budget) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [[34, 23, 1, 24, 75, 33, 54, 8], 60],
+      "expected": 58,
+      "hidden": false
+    },
+    {
+      "args": [[10, 20, 30], 15],
+      "expected": -1,
+      "hidden": false
+    },
+    {
+      "args": [[], 10],
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "args": [[5], 10],
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "args": [[5, 5], 10],
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "args": [[5, 5], 9],
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, 3, 4, 5], 100],
+      "expected": 9,
+      "hidden": true
+    },
+    {
+      "args": [[1, 1, 1, 1], 2],
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "args": [[9, 1, 8, 2], 10],
+      "expected": 10,
+      "hidden": true
+    },
+    {
+      "args": [[1000000000, 1000000000], 2000000000],
+      "expected": 2000000000,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Checking every pair is O(n²). Would sorting the prices help you rule pairs out?",
+    "After sorting, point at the cheapest and the most expensive gift. If their sum is over budget, what does that tell you about the expensive one?",
+    "If the sum fits, record it and move the left pointer right to try a bigger sum. If it doesn't, move the right pointer left. Stop when they meet."
+  ],
+  "pitfalls": [
+    "Pairing an item with itself.",
+    "Overflow when adding two values near 10^9 in a 32-bit int in Java or C++.",
+    "Moving the wrong pointer after a sum that fits.",
+    "Returning 0 instead of -1 when nothing fits."
+  ],
+  "complexity": {
+    "time": "O(n log n)",
+    "space": "O(1)"
+  },
+  "interviewerNotes": [
+    "Ask them to argue why dropping the right item is safe when the sum is over budget.",
+    "Ask about duplicates and about using the same item twice.",
+    "Ask about overflow: 2 * 10^9 is close to the 32-bit limit. The O(1) space ignores whatever the sort itself uses.",
+    "Follow-ups: if the prices arrive already sorted, it's O(n). For three gifts, it's O(n²) with a fixed first item."
+  ]
+}

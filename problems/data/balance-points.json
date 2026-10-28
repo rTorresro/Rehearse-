@@ -1,0 +1,101 @@
+{
+  "id": "balance-points",
+  "title": "Balance Points",
+  "difficulty": "easy",
+  "tags": ["arrays", "prefix-sums"],
+  "statement": [
+    "Picture a row of crates with weights `nums`. Position `i` is a *balance point* if the total weight strictly to its left equals the total weight strictly to its right. The crate at `i` counts on neither side, and an empty side weighs 0.",
+    "Return every balance point in increasing order."
+  ],
+  "signature": {
+    "name": "balancePoints",
+    "params": [
+      {
+        "name": "nums",
+        "type": "int[]"
+      }
+    ],
+    "returns": "int[]"
+  },
+  "examples": [
+    {
+      "input": "nums = [2,3,-1,8,4]",
+      "output": "[3]",
+      "explanation": "Left of index 3 is 2 + 3 - 1 = 4, and right of it is 4."
+    },
+    {
+      "input": "nums = [1,0,-1,0,1]",
+      "output": "[0,2,4]",
+      "explanation": "At index 2, both sides weigh 1."
+    }
+  ],
+  "constraints": ["0 <= nums.length <= 10^5", "-10^4 <= nums[i] <= 10^4"],
+  "starterCode": {
+    "python": "def balance_points(nums: list[int]) -> list[int]:\n    pass\n",
+    "javascript": "/**\n * @param {number[]} nums\n * @returns {number[]}\n */\nfunction balancePoints(nums) {\n  \n}\n",
+    "java": "class Solution {\n    public int[] balancePoints(int[] nums) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    vector<int> balancePoints(vector<int>& nums) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [[2, 3, -1, 8, 4]],
+      "expected": [3],
+      "hidden": false
+    },
+    {
+      "args": [[1, 0, -1, 0, 1]],
+      "expected": [0, 2, 4],
+      "hidden": false
+    },
+    {
+      "args": [[]],
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "args": [[5]],
+      "expected": [0],
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, 3]],
+      "expected": [],
+      "hidden": true
+    },
+    {
+      "args": [[0, 0, 0]],
+      "expected": [0, 1, 2],
+      "hidden": true
+    },
+    {
+      "args": [[-3, 7, -3]],
+      "expected": [1],
+      "hidden": true
+    },
+    {
+      "args": [[3, -3, 10, 1, -1]],
+      "expected": [2],
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Recomputing both sides for every index is O(n²). What single number would let you get the right side from the left side?",
+    "Compute the total once. Then the right side is total minus left minus nums[i].",
+    "Sweep left to right with a running left sum, and add nums[i] to it only after checking index i."
+  ],
+  "pitfalls": [
+    "Counting nums[i] on one of the sides.",
+    "Adding nums[i] to the left sum before checking index i.",
+    "Returning only the first balance point.",
+    "Stopping early as if sums only grow, which negative weights break."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+  },
+  "interviewerNotes": [
+    "Let them start with brute force, then ask what work repeats between neighboring indices.",
+    "Ask why you can't stop early once the left side passes the right, given negative weights.",
+    "Ask about overflow: the sums fit in 32 bits here, but what if the weights were larger?"
+  ]
+}

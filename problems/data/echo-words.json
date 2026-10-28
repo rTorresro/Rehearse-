@@ -1,0 +1,99 @@
+{
+  "id": "echo-words",
+  "title": "Echo Words",
+  "difficulty": "medium",
+  "tags": ["hashing", "strings"],
+  "statement": [
+    "Two words *echo* each other if one becomes the other by repeatedly moving its first letter to the end. For example, `\"lamp\"` echoes `\"ampl\"`, `\"mpla\"`, and `\"plam\"`, and every word echoes itself. Words of different lengths never echo.",
+    "Given a list of words, return how many groups of mutually echoing words there are."
+  ],
+  "signature": {
+    "name": "echoGroups",
+    "params": [
+      {
+        "name": "words",
+        "type": "string[]"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "words = [\"lamp\",\"mpla\",\"ampl\",\"palm\",\"lmap\"]",
+      "output": "3",
+      "explanation": "\"lamp\", \"mpla\", and \"ampl\" form one group. \"palm\" uses the same letters but isn't a rotation of \"lamp\", and neither is \"lmap\"."
+    },
+    {
+      "input": "words = [\"aa\",\"aa\",\"a\"]",
+      "output": "2"
+    }
+  ],
+  "constraints": [
+    "0 <= words.length <= 10^4",
+    "1 <= words[i].length <= 20",
+    "words consist of lowercase English letters"
+  ],
+  "starterCode": {
+    "python": "def echo_groups(words: list[str]) -> int:\n    pass\n",
+    "javascript": "/**\n * @param {string[]} words\n * @returns {number}\n */\nfunction echoGroups(words) {\n  \n}\n",
+    "java": "class Solution {\n    public int echoGroups(String[] words) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    int echoGroups(vector<string>& words) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [["lamp", "mpla", "ampl", "palm", "lmap"]],
+      "expected": 3,
+      "hidden": false
+    },
+    {
+      "args": [["aa", "aa", "a"]],
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "args": [[]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [["abc"]],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [["abab", "baba", "abab"]],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [["abc", "acb", "bca", "cab", "bac"]],
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "args": [["ab", "ba", "aab", "aba", "baa", "bba"]],
+      "expected": 3,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Comparing every pair of words is slow. Can you give every word in a group the same key?",
+    "Pick one rotation to stand for the whole group, for example the alphabetically smallest one.",
+    "A word has only as many rotations as letters. Take the smallest one as the key and count distinct keys in a set."
+  ],
+  "pitfalls": [
+    "Using the sorted letters as the key, which groups anagrams instead of rotations.",
+    "Comparing words of different lengths.",
+    "Counting duplicate words as separate groups.",
+    "Checking every pair with the doubled-string trick, which is correct but quadratic in the number of words."
+  ],
+  "complexity": {
+    "time": "O(n · L²)",
+    "space": "O(n · L)"
+  },
+  "interviewerNotes": [
+    "If they reach for sorted letters, ask them to check \"palm\" against \"lamp\".",
+    "Ask why a canonical key turns a pairwise problem into a counting problem.",
+    "L is at most 20 here, so trying every rotation is fine. Strong candidates may mention Booth's algorithm or Lyndon words for linear-time minimal rotation."
+  ]
+}

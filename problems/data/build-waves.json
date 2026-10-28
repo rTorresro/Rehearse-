@@ -1,0 +1,173 @@
+{
+  "id": "build-waves",
+  "title": "Build Waves",
+  "difficulty": "medium",
+  "tags": ["graphs", "topological-sort", "bfs"],
+  "statement": [
+    "A project has `n` modules numbered 0 to n - 1. Each pair `[a, b]` in `deps` means module `a` depends on module `b`, so `b` has to be built before `a`.",
+    "Builds run in waves. In each wave, every module whose dependencies are all already built gets built at the same time. Return how many waves it takes to build everything, or `-1` if some module can never be built because of a dependency cycle. With n = 0, the answer is 0."
+  ],
+  "signature": {
+    "name": "buildWaves",
+    "params": [
+      {
+        "name": "n",
+        "type": "int"
+      },
+      {
+        "name": "deps",
+        "type": "int[][]"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "n = 5, deps = [[1,0],[2,0],[3,1],[3,2],[4,3]]",
+      "output": "4",
+      "explanation": "Module 0, then 1 and 2 together, then 3, then 4."
+    },
+    {
+      "input": "n = 3, deps = [[0,1],[1,2],[2,1]]",
+      "output": "-1",
+      "explanation": "1 and 2 depend on each other."
+    }
+  ],
+  "constraints": [
+    "0 <= n <= 10^4",
+    "0 <= deps.length <= 5 * 10^4",
+    "0 <= a, b < n and a != b",
+    "no pair appears twice"
+  ],
+  "starterCode": {
+    "python": "def build_waves(n: int, deps: list[list[int]]) -> int:\n    pass\n",
+    "javascript": "/**\n * @param {number} n\n * @param {number[][]} deps\n * @returns {number}\n */\nfunction buildWaves(n, deps) {\n  \n}\n",
+    "java": "class Solution {\n    public int buildWaves(int n, int[][] deps) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    int buildWaves(int n, vector<vector<int>>& deps) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [
+        5,
+        [
+          [1, 0],
+          [2, 0],
+          [3, 1],
+          [3, 2],
+          [4, 3]
+        ]
+      ],
+      "expected": 4,
+      "hidden": false
+    },
+    {
+      "args": [
+        3,
+        [
+          [0, 1],
+          [1, 2],
+          [2, 1]
+        ]
+      ],
+      "expected": -1,
+      "hidden": false
+    },
+    {
+      "args": [0, []],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [1, []],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [3, []],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [
+        2,
+        [
+          [0, 1],
+          [1, 0]
+        ]
+      ],
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "args": [
+        4,
+        [
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]
+      ],
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "args": [
+        4,
+        [
+          [3, 0],
+          [3, 1],
+          [3, 2]
+        ]
+      ],
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "args": [
+        6,
+        [
+          [1, 0],
+          [2, 1],
+          [4, 3],
+          [5, 4],
+          [5, 2]
+        ]
+      ],
+      "expected": 4,
+      "hidden": true
+    },
+    {
+      "args": [
+        5,
+        [
+          [1, 0],
+          [2, 1],
+          [0, 2],
+          [4, 3]
+        ]
+      ],
+      "expected": -1,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "A module can be built as soon as the number of unbuilt modules it depends on drops to zero. What would you track for each module?",
+    "Count each module's unbuilt dependencies, start with every module at zero, and process them one wave at a time, like a level-by-level BFS.",
+    "When a wave builds a module, lower the count of everything that depends on it. If fewer than n modules ever get built, there's a cycle."
+  ],
+  "pitfalls": [
+    "Getting the edge direction backwards: [a, b] means b comes first.",
+    "Doing a plain topological sort and counting modules instead of waves.",
+    "Missing cycles, or only finding them in the part of the graph reachable from module 0.",
+    "Returning 1 instead of 0 when n is 0."
+  ],
+  "complexity": {
+    "time": "O(n + d)",
+    "space": "O(n + d)"
+  },
+  "interviewerNotes": [
+    "Ask them to restate the edge direction before coding.",
+    "Ask how waves relate to Kahn's algorithm, and how they know a cycle exists.",
+    "Follow-ups: return the modules in each wave, or give each module a build time and find the shortest total build, the critical path."
+  ]
+}

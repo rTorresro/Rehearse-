@@ -1,0 +1,101 @@
+{
+  "id": "leaf-spread",
+  "title": "Leaf Spread",
+  "difficulty": "easy",
+  "tags": ["trees", "dfs"],
+  "statement": [
+    "A leaf is a node with no children, and the root is at depth 0.",
+    "Return the difference between the depth of the deepest leaf and the depth of the shallowest leaf. A tree with a single node, and an empty tree, both have a spread of 0.",
+    "The tree is given in level order, with `null` where a child is missing."
+  ],
+  "signature": {
+    "name": "leafSpread",
+    "params": [
+      {
+        "name": "root",
+        "type": "tree"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "root = [1,2,3,null,null,4,null,5]",
+      "output": "2",
+      "explanation": "The shallowest leaf, 2, is at depth 1 and the deepest leaf, 5, is at depth 3."
+    },
+    {
+      "input": "root = [8,4,9]",
+      "output": "0"
+    }
+  ],
+  "constraints": ["0 <= number of nodes <= 10^4", "node values are integers"],
+  "starterCode": {
+    "python": "from typing import Optional\n\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef leaf_spread(root: Optional[TreeNode]) -> int:\n    pass\n",
+    "javascript": "// function TreeNode(val, left, right) {\n//   this.val = val ?? 0;\n//   this.left = left ?? null;\n//   this.right = right ?? null;\n// }\n\n/**\n * @param {TreeNode | null} root\n * @returns {number}\n */\nfunction leafSpread(root) {\n  \n}\n",
+    "java": "// class TreeNode {\n//     int val;\n//     TreeNode left, right;\n// }\n\nclass Solution {\n    public int leafSpread(TreeNode root) {\n        \n    }\n}\n",
+    "cpp": "// struct TreeNode {\n//     int val;\n//     TreeNode *left, *right;\n// };\n\nclass Solution {\npublic:\n    int leafSpread(TreeNode* root) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [[1, 2, 3, null, null, 4, null, 5]],
+      "expected": 2,
+      "hidden": false
+    },
+    {
+      "args": [[8, 4, 9]],
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "args": [[]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[1]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, 3, 4]],
+      "expected": 1,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, null, 3, null, 4]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, 3, 4, 5, null, null, 6, null, null, null, 7]],
+      "expected": 3,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "You need two numbers from the leaves: the smallest depth and the largest. Can one traversal find both?",
+    "Traverse the tree carrying the current depth, and when a node has no children, update the smallest and largest leaf depth.",
+    "A node with only one child is not a leaf, so don't treat its missing child as a leaf at the next depth."
+  ],
+  "pitfalls": [
+    "Treating a node with one missing child as a leaf, the classic minimum-depth bug.",
+    "Not handling the empty tree.",
+    "Combining subtree heights in a way that counts missing children as depth 0.",
+    "Deep recursion on a long chain."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(h)"
+  },
+  "interviewerNotes": [
+    "The key probe is a node with one child. Give them [1,2] if they haven't tested it.",
+    "Ask whether BFS could stop early, and why it can for the shallowest leaf but not the deepest.",
+    "Ask what h is for a balanced tree versus a chain."
+  ]
+}

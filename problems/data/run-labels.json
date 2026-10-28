@@ -1,0 +1,95 @@
+{
+  "id": "run-labels",
+  "title": "Run Labels",
+  "difficulty": "easy",
+  "tags": ["strings", "two-pointers"],
+  "statement": [
+    "A sign printer saves ink by compressing repeated letters. Each maximal run of the same character is written as the character followed by the run length, but the length is left off when the run is a single character. For example, `\"aaabcc\"` becomes `\"a3bc2\"`.",
+    "Return the compressed form of `s`."
+  ],
+  "signature": {
+    "name": "compressRuns",
+    "params": [
+      {
+        "name": "s",
+        "type": "string"
+      }
+    ],
+    "returns": "string"
+  },
+  "examples": [
+    {
+      "input": "s = \"aaabcc\"",
+      "output": "\"a3bc2\""
+    },
+    {
+      "input": "s = \"abc\"",
+      "output": "\"abc\"",
+      "explanation": "No run is longer than one character."
+    }
+  ],
+  "constraints": ["0 <= s.length <= 10^5", "s consists of lowercase English letters"],
+  "starterCode": {
+    "python": "def compress_runs(s: str) -> str:\n    pass\n",
+    "javascript": "/**\n * @param {string} s\n * @returns {string}\n */\nfunction compressRuns(s) {\n  \n}\n",
+    "java": "class Solution {\n    public String compressRuns(String s) {\n        \n    }\n}\n",
+    "cpp": "class Solution {\npublic:\n    string compressRuns(string s) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": ["aaabcc"],
+      "expected": "a3bc2",
+      "hidden": false
+    },
+    {
+      "args": ["abc"],
+      "expected": "abc",
+      "hidden": false
+    },
+    {
+      "args": [""],
+      "expected": "",
+      "hidden": true
+    },
+    {
+      "args": ["z"],
+      "expected": "z",
+      "hidden": true
+    },
+    {
+      "args": ["zzzzzzzzzzzz"],
+      "expected": "z12",
+      "hidden": true
+    },
+    {
+      "args": ["aabbaa"],
+      "expected": "a2b2a2",
+      "hidden": true
+    },
+    {
+      "args": ["abbbbbbbbbbc"],
+      "expected": "ab10c",
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "Think of the string as a sequence of runs. How do you know where one run ends?",
+    "Use two indices: one at the start of a run, and one that moves forward while the character stays the same.",
+    "Build the answer in a list or string builder rather than concatenating strings over and over."
+  ],
+  "pitfalls": [
+    "Dropping the last run because the loop only writes a run when the character changes.",
+    "Writing \"1\" after single characters.",
+    "Turning the count into a character with arithmetic like '0' + count, which breaks for runs of 10 or more.",
+    "Quadratic time from repeated string concatenation in a loop."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+  },
+  "interviewerNotes": [
+    "Ask how they handle runs of 10 or more.",
+    "Ask whether the output can ever be longer than the input, and why not.",
+    "Follow-up: write the decoder, and ask why the format would be ambiguous if s could contain digits."
+  ]
+}

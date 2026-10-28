@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Feedback report</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0B0D10}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible{outline:2px solid #8FE9DC;outline-offset:2px}
+</style>
+</helmet>
+
+<div style="min-height: 1280px; background: #0B0D10; color: #E6E9EE; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; display: flex; flex-direction: column; box-sizing: border-box">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 12px 24px; background: #0E1116; border-bottom: 1px solid #232830">
+<div style="display: flex; align-items: center; gap: 10px">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="{{accent}}" stroke-width="1.5"></circle><circle cx="12" cy="12" r="4.5" fill="{{accent}}"></circle></svg>
+<span style="font-size: 15px; font-weight: 600; letter-spacing: -0.01em">Rehearse</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #C4CBD6">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5FD39A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+Interview complete
+</div>
+</header>
+
+<main style="width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 40px 24px 64px; display: flex; flex-direction: column; gap: 32px">
+
+<!-- Title row -->
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9AA3B0">Feedback report</div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -0.02em">Merge Meeting Slots</h1>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 13px; color: #C4CBD6">
+<span style="background: #2A2110; color: #F5B351; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-weight: 500">Medium</span>
+<span>Python 3</span>
+<span style="font-family: 'JetBrains Mono', monospace">31:42</span>
+<span>Oct 25, 2026</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" style="background: #161B22; color: #E6E9EE; border: 1px solid #2F3742; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 500">Review transcript</button>
+<button type="button" style="display: flex; align-items: center; gap: 8px; background: {{accent}}; color: #05201C; border: 0; border-radius: 8px; padding: 10px 20px; font-size: 13px; font-weight: 600">
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"></path><path d="M3 21v-5h5"></path></svg>
+Practice again
+</button>
+</div>
+</div>
+
+<!-- Score + categories -->
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+
+<section aria-label="Overall score" style="flex: 1 1 300px; max-width: 360px; box-sizing: border-box; background: #12151A; border: 1px solid #232830; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px">
+<svg width="168" height="168" viewBox="0 0 140 140" role="img" aria-label="Overall score 78 out of 100">
+<circle cx="70" cy="70" r="60" fill="none" stroke="#232830" stroke-width="10"></circle>
+<circle cx="70" cy="70" r="60" fill="none" stroke="{{accent}}" stroke-width="10" stroke-linecap="round" stroke-dasharray="294.05 376.99" transform="rotate(-90 70 70)"></circle>
+<text x="70" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="42" font-weight="500" fill="#E6E9EE">78</text>
+<text x="70" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#9AA3B0">out of 100</text>
+</svg>
+<div style="text-align: center; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 16px; font-weight: 600">Solid run</div>
+<div style="font-size: 13.5px; line-height: 1.55; color: #C4CBD6">Clean core solution and clear reasoning. Edge cases showed up late.</div>
+</div>
+<div style="align-self: stretch; border-top: 1px solid #232830; padding-top: 16px; display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<div style="display: flex; justify-content: space-between"><span style="color: #9AA3B0">Hints used</span><span style="font-family: 'JetBrains Mono', monospace">0 of 3</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #9AA3B0">Tests passed on submit</span><span style="font-family: 'JetBrains Mono', monospace">3 of 3</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #9AA3B0">Runs before submit</span><span style="font-family: 'JetBrains Mono', monospace">4</span></div>
+</div>
+</section>
+
+<div style="flex: 3 1 560px; min-width: 0; display: flex; flex-wrap: wrap; gap: 20px; align-content: stretch">
+
+<section aria-label="Communication" style="flex: 1 1 260px; box-sizing: border-box; background: #12151A; border: 1px solid #232830; border-radius: 14px; padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 style="margin: 0; font-size: 15px; font-weight: 600">Communication</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 20px">82</span></div>
+<div style="height: 6px; background: #232830; border-radius: 3px"><div style="width: 82%; height: 6px; background: {{accent}}; border-radius: 3px"></div></div>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #C4CBD6">You asked about touching slots before coding and narrated your plan as you typed. When a follow-up comes in, a quick "let me think" keeps the interviewer in the loop during pauses.</p>
+</section>
+
+<section aria-label="Problem solving" style="flex: 1 1 260px; box-sizing: border-box; background: #12151A; border: 1px solid #232830; border-radius: 14px; padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 style="margin: 0; font-size: 15px; font-weight: 600">Problem Solving</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 20px">76</span></div>
+<div style="height: 6px; background: #232830; border-radius: 3px"><div style="width: 76%; height: 6px; background: {{accent}}; border-radius: 3px"></div></div>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #C4CBD6">You landed on sort-then-merge without a hint. The empty input case only surfaced after a failing test, so list your edge cases out loud before you hit Run.</p>
+</section>
+
+<section aria-label="Code quality" style="flex: 1 1 260px; box-sizing: border-box; background: #12151A; border: 1px solid #232830; border-radius: 14px; padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 style="margin: 0; font-size: 15px; font-weight: 600">Code Quality</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 20px">71</span></div>
+<div style="height: 6px; background: #232830; border-radius: 3px"><div style="width: 71%; height: 6px; background: {{accent}}; border-radius: 3px"></div></div>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #C4CBD6">Readable names and a tidy loop. Put the empty check at the top from the start, and leave a short comment on why you mutate the last merged slot in place.</p>
+</section>
+
+<section aria-label="Complexity analysis" style="flex: 1 1 260px; box-sizing: border-box; background: #12151A; border: 1px solid #232830; border-radius: 14px; padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 style="margin: 0; font-size: 15px; font-weight: 600">Complexity Analysis</h2><span style="font-family: 'JetBrains Mono', monospace; font-size: 20px">84</span></div>
+<div style="height: 6px; background: #232830; border-radius: 3px"><div style="width: 84%; height: 6px; background: {{accent}}; border-radius: 3px"></div></div>
+<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #C4CBD6">You gave O(n log n) time right away and tied it to the sort. For space, mention that the sort is in place so the only extra memory is the output list.</p>
+</section>
+
+</div>
+</div>
+
+<!-- Timeline -->
+<section aria-label="Key moments" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em">Key moments</h2>
+<span style="font-size: 13px; color: #9AA3B0">Each moment links to the transcript or a snapshot of your code at that point.</span>
+</div>
+
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+
+<li style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 20px; background: #12151A; border: 1px solid #232830; border-radius: 12px; padding: 16px 18px">
+<div style="flex: 0 0 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #C4CBD6; padding-top: 2px">03:12</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: flex; align-items: center; gap: 6px; background: #10261C; color: #5FD39A; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Strength</span>
+<span style="font-size: 14px; font-weight: 600">Clarified touching slots</span>
+</div>
+<div style="font-size: 13.5px; line-height: 1.55; color: #C4CBD6">You asked whether [1,4] and [4,5] should merge before writing anything.</div>
+</div>
+<div style="display: flex; gap: 8px"><button type="button" style="background: transparent; color: #E6E9EE; border: 1px solid #2F3742; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Transcript</button></div>
+</li>
+
+<li style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 20px; background: #12151A; border: 1px solid #232830; border-radius: 12px; padding: 16px 18px">
+<div style="flex: 0 0 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #C4CBD6; padding-top: 2px">07:40</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: flex; align-items: center; gap: 6px; background: #10261C; color: #5FD39A; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Strength</span>
+<span style="font-size: 14px; font-weight: 600">Explained the approach first</span>
+</div>
+<div style="font-size: 13.5px; line-height: 1.55; color: #C4CBD6">Sort by start, then one pass keeping the last merged slot. You said this out loud before typing.</div>
+</div>
+<div style="display: flex; gap: 8px"><button type="button" style="background: transparent; color: #E6E9EE; border: 1px solid #2F3742; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Transcript</button></div>
+</li>
+
+<li style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 20px; background: #12151A; border: 1px solid #232830; border-radius: 12px; padding: 16px 18px">
+<div style="flex: 0 0 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #C4CBD6; padding-top: 2px">24:09</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: flex; align-items: center; gap: 6px; background: #10261C; color: #5FD39A; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Strength</span>
+<span style="font-size: 14px; font-weight: 600">Stated time complexity clearly</span>
+</div>
+<div style="font-size: 13.5px; line-height: 1.55; color: #C4CBD6">O(n log n) from the sort plus one linear pass, with the reason for each part.</div>
+</div>
+<div style="display: flex; gap: 8px"><button type="button" style="background: transparent; color: #E6E9EE; border: 1px solid #2F3742; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Transcript</button></div>
+</li>
+
+<li style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 20px; background: #12151A; border: 1px solid #5C4A1E; border-radius: 12px; padding: 16px 18px">
+<div style="flex: 0 0 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #C4CBD6; padding-top: 2px">24:40</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: flex; align-items: center; gap: 6px; background: #2A2110; color: #F5B351; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17.5v.5"></path></svg>Needs work</span>
+<span style="font-size: 14px; font-weight: 600">Missed the empty input case</span>
+</div>
+<div style="font-size: 13.5px; line-height: 1.55; color: #C4CBD6">Case 3 failed with an IndexError on []. The interviewer had to point you to the output before you found line 4.</div>
+</div>
+<div style="display: flex; gap: 8px"><button type="button" style="background: transparent; color: #E6E9EE; border: 1px solid #2F3742; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Transcript</button><button type="button" style="background: transparent; color: {{accent}}; border: 1px solid {{accent}}; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Code v3</button></div>
+</li>
+
+<li style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 20px; background: #12151A; border: 1px solid #232830; border-radius: 12px; padding: 16px 18px">
+<div style="flex: 0 0 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #C4CBD6; padding-top: 2px">27:30</div>
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<span style="display: flex; align-items: center; gap: 6px; background: #10261C; color: #5FD39A; border-radius: 6px; padding: 3px 10px; font-size: 12px; font-weight: 500"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Strength</span>
+<span style="font-size: 14px; font-weight: 600">Fixed it cleanly</span>
+</div>
+<div style="font-size: 13.5px; line-height: 1.55; color: #C4CBD6">You returned an empty list up front, reran, and all three cases passed.</div>
+</div>
+<div style="display: flex; gap: 8px"><button type="button" style="background: transparent; color: #E6E9EE; border: 1px solid #2F3742; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Transcript</button><button type="button" style="background: transparent; color: {{accent}}; border: 1px solid {{accent}}; border-radius: 6px; padding: 6px 12px; font-size: 12.5px">Code v4</button></div>
+</li>
+
+</ol>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2DD4BF","options":["#2DD4BF","#5B9DFF","#A78BFA","#F5B351"],"section":"Look"},"$preview":{"width":1440,"height":1280}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#2DD4BF';
+    return { accent };
+  }
+}
+</script>
+</body>
+</html>

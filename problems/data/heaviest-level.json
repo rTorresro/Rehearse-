@@ -1,0 +1,101 @@
+{
+  "id": "heaviest-level",
+  "title": "Heaviest Level",
+  "difficulty": "medium",
+  "tags": ["trees", "bfs"],
+  "statement": [
+    "Each node of a binary tree holds an integer weight, and the root is at depth 0.",
+    "Return the depth whose nodes have the largest total weight. If several depths tie, return the smallest one. Return `-1` for an empty tree.",
+    "The tree is given in level order, with `null` where a child is missing."
+  ],
+  "signature": {
+    "name": "heaviestLevel",
+    "params": [
+      {
+        "name": "root",
+        "type": "tree"
+      }
+    ],
+    "returns": "int"
+  },
+  "examples": [
+    {
+      "input": "root = [1,7,0,7,-8]",
+      "output": "1",
+      "explanation": "Depth 0 weighs 1, depth 1 weighs 7, and depth 2 weighs -1."
+    },
+    {
+      "input": "root = [5,-10,-10]",
+      "output": "0"
+    }
+  ],
+  "constraints": ["0 <= number of nodes <= 10^4", "-10^5 <= weight <= 10^5"],
+  "starterCode": {
+    "python": "from typing import Optional\n\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\n\ndef heaviest_level(root: Optional[TreeNode]) -> int:\n    pass\n",
+    "javascript": "// function TreeNode(val, left, right) {\n//   this.val = val ?? 0;\n//   this.left = left ?? null;\n//   this.right = right ?? null;\n// }\n\n/**\n * @param {TreeNode | null} root\n * @returns {number}\n */\nfunction heaviestLevel(root) {\n  \n}\n",
+    "java": "// class TreeNode {\n//     int val;\n//     TreeNode left, right;\n// }\n\nclass Solution {\n    public int heaviestLevel(TreeNode root) {\n        \n    }\n}\n",
+    "cpp": "// struct TreeNode {\n//     int val;\n//     TreeNode *left, *right;\n// };\n\nclass Solution {\npublic:\n    int heaviestLevel(TreeNode* root) {\n        \n    }\n};\n"
+  },
+  "testCases": [
+    {
+      "args": [[1, 7, 0, 7, -8]],
+      "expected": 1,
+      "hidden": false
+    },
+    {
+      "args": [[5, -10, -10]],
+      "expected": 0,
+      "hidden": false
+    },
+    {
+      "args": [[]],
+      "expected": -1,
+      "hidden": true
+    },
+    {
+      "args": [[3]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[1, 2, 3, 4, null, null, 5]],
+      "expected": 2,
+      "hidden": true
+    },
+    {
+      "args": [[-1, -2, -3]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[0, 1, -1]],
+      "expected": 0,
+      "hidden": true
+    },
+    {
+      "args": [[1, null, 2, null, 3, null, 10]],
+      "expected": 3,
+      "hidden": true
+    }
+  ],
+  "hints": [
+    "You need a total for each depth. Which traversal visits the tree one depth at a time?",
+    "Do a breadth-first search and handle the queue one level at a time, using its size at the start of each level.",
+    "Keep the best total and its depth, and only replace them on a strictly larger total, so ties keep the shallower depth."
+  ],
+  "pitfalls": [
+    "Starting the best total at 0, which fails when every level is negative.",
+    "Returning the deeper depth on a tie.",
+    "Mixing nodes from two levels in one BFS round.",
+    "Recursing 10^4 levels deep on a skewed tree, which overflows Python's default recursion limit."
+  ],
+  "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+  },
+  "interviewerNotes": [
+    "Either BFS by level or DFS with a list of sums per depth is fine. Ask them to compare the memory each uses.",
+    "Ask about trees where every weight is negative.",
+    "Ask what happens with a 10^4-node chain if they recurse."
+  ]
+}

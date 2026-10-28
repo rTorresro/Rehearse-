@@ -1,0 +1,22 @@
+{
+  "name": "@rehearse/problems",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "test": "tsx scripts/validate.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@rehearse/shared": "*",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "@types/node": "^26.6.5"
+  }
+}
